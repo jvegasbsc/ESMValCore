@@ -4,7 +4,7 @@ FROM bsces/miniconda3:debian-stretch-20190610
 
 WORKDIR /src/ESMValCore
 COPY environment.yml .
-RUN conda update -y conda && conda env update --name base --file environment.yml && conda clean --all -y
+RUN conda update -n base -y conda && conda install mamba -c conda-forge && mamba env update --name base --file environment.yml && mamba clean --all -y
 
 # Make RUN commands use the new environment:
 SHELL ["/bin/bash", "-c"]
